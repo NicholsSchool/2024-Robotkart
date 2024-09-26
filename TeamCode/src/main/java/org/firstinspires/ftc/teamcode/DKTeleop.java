@@ -55,7 +55,7 @@ public class DKTeleop extends OpMode
                 dk.driveLerp(power, gamepad1.left_stick_x);
                 break;
             case 3:
-                dk.driveLerp(0.5 * power, 0.5 * gamepad1.left_stick_x);
+                dk.driveLerp(0.5 * power, gamepad1.left_stick_x);
         }
         telemetry.addData("green",dk.getColors());
     }

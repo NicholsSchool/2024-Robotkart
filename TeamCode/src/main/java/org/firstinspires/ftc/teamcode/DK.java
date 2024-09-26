@@ -7,14 +7,16 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class DK {
     //left, right
-    DcMotorEx leftMotor, rightMotor;
+    DcMotorEx backRight, backLeft, frontLeft, frontRight;
     Servo wheel;
     ColorSensor colorSensor;
     double outputPower;
     double lerp;
     public DK(HardwareMap hwMap){
-        leftMotor = hwMap.get(DcMotorEx.class, "left");
-        rightMotor = hwMap.get(DcMotorEx.class, "right");
+        backRight = hwMap.get(DcMotorEx.class, "backRight");
+        backLeft = hwMap.get(DcMotorEx.class, "backLeft");
+        frontLeft = hwMap.get(DcMotorEx.class, "frontLeft");
+        frontRight = hwMap.get(DcMotorEx.class, "frontRight");
         wheel = hwMap.get(Servo.class, "wheel");
         colorSensor = hwMap.get(ColorSensor.class, "colorSensor");
         outputPower = 0;
@@ -22,8 +24,10 @@ public class DK {
     }
 
     public void drive(double power, double turn){
-        leftMotor.setPower(power - 0.4 * turn);
-        rightMotor.setPower(-power - 0.4 * turn);
+        backLeft.setPower(power - 0.4 * turn);
+        backRight.setPower(-power - 0.4 * turn);
+        frontLeft.setPower(power - 0.4 * turn);
+        frontRight.setPower(-power - 0.4 * turn);
     }
     public void driveLerp(double power, double turn){
         outputPower = outputPower + (power - outputPower) * lerp;
@@ -42,7 +46,6 @@ public class DK {
             return 1;
         }
     }
-
 
     public int getColors(){
         return colorSensor.red();
