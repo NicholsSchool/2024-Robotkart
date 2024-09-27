@@ -43,9 +43,9 @@ public class DKTeleop extends OpMode
     public void loop(){
         dk.funnyMode(gamepad1.dpad_left || dk.color() == 2);
         if(gamepad1.b){
-            power = -1;
+            power = -.5;
         }  else if(gamepad1.a){
-            power = 1;
+            power = .5;
         }else{
             power = 0;
         }
