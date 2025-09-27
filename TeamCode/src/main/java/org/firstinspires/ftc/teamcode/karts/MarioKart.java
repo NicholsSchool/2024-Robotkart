@@ -24,8 +24,8 @@ public class MarioKart extends Kart {
 
     @Override
     public void drive(double power, double strafe, double turn) {
-        lMotor.setPower(power - turn);
-        rMotor.setPower(-power - turn);
+        lMotor.setPower(-power - turn);
+        rMotor.setPower(power - turn);
     }
 
     @Override
